@@ -1,2 +1,2 @@
 # trello-clone
-clone do trello (inacabado)
+clone do trello 
