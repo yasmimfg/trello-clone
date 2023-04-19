@@ -1,121 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trello</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-   <script src="./javascript/javascript.js"></script>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="shortcut icon" href="./favicon.ico" type="image/png">
- 
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello</title>
 
-  
-  <!-- barra -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Trello</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Áreas de Trabalho </a>
-        <a class="nav-item nav-link" href="#">Recente</a>
-        <a class="nav-item nav-link" href="#">Mercado com estrela</a>
-        <a class="nav-item nav-link" href="#">Modelos</a>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./javascript/javascript.js" defer></script>
+    <script src="./javascript/todo.js" defer></script>
+  </head>
+  <body>
+
+    <!--barra-->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="./trello-ar21-removebg-preview.png" alt="Trello logo">
+      </div>
+      <ul class="navbar-links">
+        <li><a href="#">Quadros</a></li>
+        <li><a href="#">Modelos</a></li>
+        <li><a href="#">Cartões</a></li>
+        <li><a href="#">Notificações</a></li>
+      </ul>
+      <div class="navbar-profile">
+        <img src="https://avatars.dicebear.com/v2/initials/y.svg" alt="avatar">
+
+        <span>Yasmim</span>
+      </div>
+    </nav>
+    
+
+    <!--cartoes-->
+
+    <div class="board">
+      <form id="todo-form">
+        <input type="text" placeholder="Novo cartão..." id="todo-input" />
+        <button type="submit">Add +</button>
+      </form>
+
+      <div class="lanes">
+        <div class="swim-lane" id="todo-lane">
+          <h3 class="heading">Para fazer </h3>
+
+          <p class="task" draggable="true">ex1</p>
+          <p class="task" draggable="true">ex2</p>
+        </div>
+
+        <div class="swim-lane">
+          <h3 class="heading">Em progresso</h3>
+
+          <p class="task" draggable="true">ex3</p>
+        </div>
+
+        <div class="swim-lane">
+          <h3 class="heading">Concluído</h3>
+
+          <p class="task" draggable="true">
+            ex4
+          </p>
+        </div>
       </div>
     </div>
-    <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link" href="#">Entrar</a>
-      <a class="nav-item nav-link" href="#">Inscreva-se</a>
-    </div>
-  </nav>
-  <div class="container">
-
-    <!-- cartao -->
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          <div class="card">
-            <div class="card-header">
-              <div class="d-flex justify-content-between">
-                <h5 class="card-title">Para Fazer</h5>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Editar</a>
-                    <a class="dropdown-item" href="#">Excluir</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h6 class="card-subtitle mb-2 text-muted">Título do cartão</h6>
-                  <p class="card-text">Descrição do cartão</p>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-sm btn-block" id="addCard1">Adicionar Cartão</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="card-header">
-              <div class="d-flex justify-content-between">
-                <h5 class="card-title">Em Progresso</h5>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Editar</a>
-                    <a class="dropdown-item" href="#">Excluir</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h6 class="card-subtitle mb-2 text-muted">Título do cartão</h6>
-                  <p class="card-text">Descrição do cartão</p>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-sm btn-block" id="addCard2">Adicionar Cartão</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="card-header">
-              <div class="d-flex justify-content-between">
-                <h5 class="card-title">Concluído</h5>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Editar</a>
-                    <a class="dropdown-item" href="#">Excluir</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h6 class="card-subtitle mb-2 text-muted">Título do cartão</h6>
-                  <p class="card-text">Descrição do cartão</p>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-sm btn-block" id="addCard3">Adicionar Cartão</button>
-            </div>
-          </div>
-        </div>
-
   </body>
-</html>              
+</html>
